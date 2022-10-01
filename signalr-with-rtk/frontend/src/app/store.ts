@@ -7,7 +7,7 @@ export const store = configureStore({
     [messagesApi.reducerPath]: messagesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(messagesMiddleware),
+    getDefaultMiddleware().concat(messagesMiddleware, messagesApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

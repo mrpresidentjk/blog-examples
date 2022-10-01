@@ -8,6 +8,7 @@ import {
   EntityState,
 } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import {messagesHubConnection} from "./messagesHubConnection";
 
 export const messagesAdapter = createEntityAdapter<Message>({
   selectId: (message) => message.uuid,
@@ -26,6 +27,18 @@ export const messagesApi = createApi({
         transformResponse(response: Message[]) {
           return messagesAdapter.addMany(initialState, response);
         },
+        async onCacheEntryAdded(
+            arg,
+            { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }
+        ) {
+          try {
+            await cacheDataLoaded
+            messagesHubConnection.on("MessageCreated", (message: Message) => {
+              updateCachedData(draft => messagesAdapter.upsertOne(draft, message));
+            })
+          } catch {}
+          await cacheEntryRemoved
+        }
       }),
     };
   },
