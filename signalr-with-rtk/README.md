@@ -9,7 +9,7 @@ This example illustrates how you can integrate [SignalR](https://dotnet.microsof
 The program can be run with docker-compose. Simply run the following command from this directory:
 
 ```sh
-docker-compose up
+docker-compose up --build
 ```
 
 You should then be able to access the frontend on http://localhost:3000
