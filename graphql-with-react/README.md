@@ -2,7 +2,7 @@
 
 ## About
 
-This example illustrates how you can use [GraphQL](https://graphql.org/) .NET and React.
+This example illustrates how you can use [GraphQL](https://graphql.org/) with .NET and React.
 
 ## Running the Application
 
