@@ -1,5 +1,4 @@
 using backend.Features.Enrollments.Models;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace backend.Features.Enrollments;
