@@ -31,6 +31,7 @@ builder.Services
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -49,5 +50,11 @@ app.UsePlayground();
 app.UseCors("CorsPolicy");
 
 app.MapControllers();
+
+using(var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<EnrollmentsContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();
