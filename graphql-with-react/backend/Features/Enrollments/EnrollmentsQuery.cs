@@ -9,7 +9,8 @@ public class EnrollmentsQuery
     [UseFiltering]
     public IQueryable<Student> GetStudents([Service] EnrollmentsContext enrollmentsContext) =>
         enrollmentsContext.Students;
-
+    
+    [UseSingleOrDefault]
     [UseProjection]
     public IQueryable<Student> GetStudent([Service] EnrollmentsContext enrollmentsContext, int id) =>
         enrollmentsContext.Students.Where(student => student.Id == id);
