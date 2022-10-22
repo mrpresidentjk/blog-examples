@@ -18,7 +18,7 @@ export interface GetAllStudentsData {
 }
 
 export interface GetStudentByIdData {
-    student: Student[]
+    student: Student
 }
 
 export interface GetStudentByIdVars{
